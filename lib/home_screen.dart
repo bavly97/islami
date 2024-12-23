@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:islami/app_theme.dart';
 import 'package:islami/tabs/hadeth/hadeth_tab.dart';
 import 'package:islami/tabs/quran/quran_tab.dart';
 import 'package:islami/tabs/radio/radio_tab.dart';
@@ -22,11 +23,35 @@ class _HomeScreenState extends State<HomeScreen> {
     RadioTab(),
     TimeTab(),
   ];
+  List<String> backgroundImageName = [
+    'quran_background',
+    'hadeth_background',
+    'sebha_background',
+    'radio_background',
+    'time_background'
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: tabs[currentIndex],
+      body: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(
+                  'assets/images/${backgroundImageName[currentIndex]}.png'),
+              fit: BoxFit.fill),
+        ),
+        child: Column(
+          children: [
+            Image.asset(
+              'assets/images/header.png',
+              height: MediaQuery.sizeOf(context).height * .18,
+            ),
+            tabs[currentIndex],
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (index) {
@@ -39,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Quran',
             activeIcon: SvgPicture.asset(
               'assets/icons/quran.svg',
-              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(AppTheme.white, BlendMode.srcIn),
             ),
           ),
           BottomNavigationBarItem(
@@ -47,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Hadeth',
             activeIcon: SvgPicture.asset(
               'assets/icons/quran.svg',
-              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(AppTheme.white, BlendMode.srcIn),
             ),
           ),
           BottomNavigationBarItem(
@@ -55,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Sebha',
             activeIcon: SvgPicture.asset(
               'assets/icons/quran.svg',
-              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(AppTheme.white, BlendMode.srcIn),
             ),
           ),
           BottomNavigationBarItem(
@@ -63,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Radio',
             activeIcon: SvgPicture.asset(
               'assets/icons/quran.svg',
-              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(AppTheme.white, BlendMode.srcIn),
             ),
           ),
           BottomNavigationBarItem(
@@ -71,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Time',
             activeIcon: SvgPicture.asset(
               'assets/icons/quran.svg',
-              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(AppTheme.white, BlendMode.srcIn),
             ),
           ),
         ],
