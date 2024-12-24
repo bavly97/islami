@@ -42,14 +42,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   'assets/images/${backgroundImageName[currentIndex]}.png'),
               fit: BoxFit.fill),
         ),
-        child: Column(
-          children: [
-            Image.asset(
-              'assets/images/header.png',
-              height: MediaQuery.sizeOf(context).height * .18,
-            ),
-            tabs[currentIndex],
-          ],
+        child: SafeArea(
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/images/header.png',
+                height: MediaQuery.sizeOf(context).height * .18,
+              ),
+              tabs[currentIndex],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
