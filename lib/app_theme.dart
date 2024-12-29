@@ -6,6 +6,7 @@ class AppTheme {
   static const Color white = Color(0xffffffff);
   static ThemeData lightTheme = ThemeData();
   static ThemeData darkTheme = ThemeData(
+    scaffoldBackgroundColor: black,
     tabBarTheme: TabBarThemeData(
       dividerHeight: 0,
       indicatorSize: TabBarIndicatorSize.tab,
