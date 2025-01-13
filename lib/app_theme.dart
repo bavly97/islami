@@ -7,6 +7,21 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData();
   static ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: black,
+    appBarTheme: AppBarTheme(
+      foregroundColor: primary,
+      backgroundColor: const Color(0xFF202020),
+      centerTitle: true,
+    ),
+    textTheme: TextTheme(
+      headlineSmall:
+          TextStyle(color: white, fontWeight: FontWeight.w700, fontSize: 24),
+      titleMedium:
+          TextStyle(color: white, fontWeight: FontWeight.w700, fontSize: 16),
+      titleSmall:
+          TextStyle(color: white, fontWeight: FontWeight.w700, fontSize: 14),
+      titleLarge:
+          TextStyle(color: white, fontWeight: FontWeight.w700, fontSize: 20),
+    ),
     tabBarTheme: TabBarThemeData(
       dividerHeight: 0,
       indicatorSize: TabBarIndicatorSize.tab,
