@@ -353,7 +353,7 @@ class SuraServices {
     arabicSuraName.length,
     (index) => getSuraFromIndex(index),
   );
-
+  static List<SuraData> mostRecentlySura = [];
   static SuraData getSuraFromIndex(int index) {
     return SuraData(
         arabicName: arabicSuraName[index],
@@ -362,7 +362,7 @@ class SuraServices {
         ayatNumber: ayatNumber[index]);
   }
 
-  static searchSuraName(String query) {
+  static void searchSuraName(String query) {
     searchResult.clear();
     for (int i = 0; i < arabicSuraName.length; i++) {
       if (arabicSuraName[i].contains(query) ||
@@ -372,5 +372,14 @@ class SuraServices {
         );
       }
     }
+  }
+
+  static void addSuraToMostRecently(SuraData sura) {
+    bool isFound = mostRecentlySura
+        .any((mostRecently) => mostRecently.ayatCount == sura.ayatCount);
+    if (isFound) {
+      mostRecentlySura.remove(sura);
+    }
+    mostRecentlySura.add(sura);
   }
 }
