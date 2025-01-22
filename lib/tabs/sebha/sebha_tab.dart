@@ -35,14 +35,13 @@ class _SebhaTabState extends State<SebhaTab> {
       children: [
         Text(
           'سَبِّحِ اسْمَ رَبِّكَ الأعلى ',
-          style: TextStyle(
-            fontSize: 36,
-            fontWeight: FontWeight.w700,
-            color: AppTheme.white,
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge!
+              .copyWith(color: AppTheme.white),
         ),
         SizedBox(
-          height: 16,
+          height: 8,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 70.0),
@@ -62,6 +61,8 @@ class _SebhaTabState extends State<SebhaTab> {
                 angle: angel,
                 child: Image.asset(
                   'assets/images/sebha_body.png',
+                  width: MediaQuery.sizeOf(context).width * .95,
+                  height: MediaQuery.sizeOf(context).width * .95,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -72,19 +73,17 @@ class _SebhaTabState extends State<SebhaTab> {
                     Text(
                       textAlign: TextAlign.center,
                       tsabeh(),
-                      style: TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.w700,
-                        color: AppTheme.white,
-                      ),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineLarge!
+                          .copyWith(color: AppTheme.white),
                     ),
                     Text(
                       counter.toString(),
-                      style: TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.w700,
-                        color: AppTheme.white,
-                      ),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineLarge!
+                          .copyWith(color: AppTheme.white),
                     ),
                   ],
                 ),

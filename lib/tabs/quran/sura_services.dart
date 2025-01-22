@@ -389,11 +389,12 @@ class SuraServices {
   }
 
   static Future<void> addSuraToMostRecently(SuraData sura) async {
-    bool isFound = mostRecentlySura
-        .any((mostRecently) => mostRecently.ayatCount == sura.ayatCount);
-    if (isFound) {
-      mostRecentlySura.remove(sura);
-    }
+    // bool isFound = mostRecentlySura
+    // .any((mostRecently) => mostRecently.ayatCount == sura.ayatCount);
+    // if (isFound) {
+    mostRecentlySura.removeWhere(
+        (mostRecently) => mostRecently.ayatCount == sura.ayatCount);
+    // }
     mostRecentlySura.add(sura);
     List<String> mostRecentlyIndexes = mostRecentlySura
         .map((sura) => (sura.ayatCount - 1).toString())

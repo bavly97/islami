@@ -46,10 +46,10 @@ class _RadioItemState extends State<RadioItem> {
         children: [
           Text(
             widget.text,
-            style: TextStyle(
-                color: AppTheme.black,
-                fontSize: 20,
-                fontWeight: FontWeight.w700),
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(color: AppTheme.black),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
