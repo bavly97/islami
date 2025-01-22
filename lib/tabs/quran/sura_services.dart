@@ -1,4 +1,5 @@
 import 'package:islami/tabs/quran/sura_data.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SuraServices {
   static List<String> arabicSuraName = [
@@ -374,12 +375,30 @@ class SuraServices {
     }
   }
 
-  static void addSuraToMostRecently(SuraData sura) {
+  static Future<void> initMostRecentlySura() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    List<String>? mostRecentlyIndexes =
+        prefs.getStringList('mostRecentlyIndexes');
+    if (mostRecentlyIndexes == null) return;
+
+    mostRecentlySura = mostRecentlyIndexes.map((indexString) {
+      int index = int.parse(indexString);
+      return getSuraFromIndex(index);
+    }).toList();
+  }
+
+  static Future<void> addSuraToMostRecently(SuraData sura) async {
     bool isFound = mostRecentlySura
         .any((mostRecently) => mostRecently.ayatCount == sura.ayatCount);
     if (isFound) {
       mostRecentlySura.remove(sura);
     }
     mostRecentlySura.add(sura);
+    List<String> mostRecentlyIndexes = mostRecentlySura
+        .map((sura) => (sura.ayatCount - 1).toString())
+        .toList();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList('mostRecentlyIndexes', mostRecentlyIndexes);
   }
 }
