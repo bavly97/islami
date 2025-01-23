@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 'assets/images/header.png',
                 height: MediaQuery.sizeOf(context).height * .18,
               ),
-              tabs[currentIndex],
+              Expanded(child: tabs[currentIndex]),
             ],
           ),
         ),

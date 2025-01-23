@@ -43,8 +43,8 @@ class _SuraDetailsState extends State<SuraDetails> {
                   sura.arabicName,
                   style: Theme.of(context)
                       .textTheme
-                      .headlineSmall!
-                      .copyWith(color: AppTheme.primary),
+                      .headlineSmall
+                      ?.copyWith(color: AppTheme.primary),
                 ),
                 Image.asset(
                   'assets/images/frame_right.png',
@@ -68,8 +68,8 @@ class _SuraDetailsState extends State<SuraDetails> {
                             textAlign: TextAlign.center,
                             style: Theme.of(context)
                                 .textTheme
-                                .titleLarge!
-                                .copyWith(color: AppTheme.primary),
+                                .titleLarge
+                                ?.copyWith(color: AppTheme.primary),
                           ),
                       itemCount: suraAyat.length),
                 ),
